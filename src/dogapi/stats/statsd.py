@@ -26,6 +26,6 @@ class StatsdAggregator(object):
             if tags:
                 payload += '|#' + ','.join(tags)
             try:
-                self.socket_sendto(payload, self.address)
+                self.socket_sendto(payload.encode('utf-8'), self.address)
             except Exception:
                 logger.exception('couldnt submit statsd point')
